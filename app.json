@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "crypto-ro-app-2",
+    "slug": "crypto-ro-app-2",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "crypto-ro-app-2"
+}
