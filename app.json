@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "crypto-ro-app-2",
-    "slug": "crypto-ro-app-2",
+    "name": "fitness-app-prod",
+    "slug": "fitness-app-prod",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ]
   },
-  "name": "crypto-ro-app-2"
+  "name": "fitness-app-prod"
 }
