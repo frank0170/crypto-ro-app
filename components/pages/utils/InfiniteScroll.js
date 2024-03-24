@@ -9,14 +9,13 @@ export function PaginatedList(props) {
   const [isLoading, setIsLoading] = useState(true);
   const nextPageIdentifierRef = useRef();
   const [isFirstPageReceived, setIsFirstPageReceived] = useState(false);
-  const [pageCount, setPageCount] = useState(1)
 
   const fetchData = () => {
     setIsLoading(true);
-    getDataFromApi().then((response) => {
-      const { data: newData } = parseResponse(response);
+    getDataFromApi(nextPageIdentifierRef.current).then((response) => {
+      const { data: newData, nextPageIdentifier } = parseResponse(response);
       setData([...data, newData]);
-
+      nextPageIdentifierRef.current = nextPageIdentifier;
       setIsLoading(false);
       !isFirstPageReceived && setIsFirstPageReceived(true);
     });
@@ -31,16 +30,16 @@ export function PaginatedList(props) {
   };
 
   const getDataFromApi = () => {
-    fetch(`https://crypto.ro/feed?paged=${pageCount}`)
-    return Promise.resolve({ data: [] });
+    // get the data from api
+    return Promise.resolve({ data: [], nextPageIdentifier: "page-1" });
   };
-
   const parseResponse = (response) => {
-    let _data = response
-    setPageCount(pageCount + 1)
-
+    let _data = response.data;
+    let nextPageIdentifier = response.nextPageIdentifier;
+    // parse response and return list and nextPage identifier.
     return {
       _data,
+      nextPageIdentifier,
     };
   };
 
